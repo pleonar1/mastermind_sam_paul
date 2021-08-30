@@ -10,6 +10,7 @@ Sam and Paul's project
 
 #### Strengths & Areas of Growth
 - Sam: Strong in technical content
+- Paul: Needs work with technical content but is willing to work 
 
 #### How do you learn best?
 - Paul: Learn by doing. Prefer working in pairs but finds solo work helpful in the long run
