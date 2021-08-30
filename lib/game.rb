@@ -3,13 +3,30 @@ class Game
 
   end
 
-  def start(input)
-    ##if the input is play, start the Game
-    ## If the input is quit, quit the game
-    ## IF the input is intructions, print instructions
+  def start
+    puts "Welcome to MASTERMIND\n"
+    puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    print ">"
+    input = $stdin.gets.chomp
+    if input.downcase == "p"
+      #play method
+    elsif input.downcase == "i"
+      instruction
+    elsif input.downcase == "q"
+      #quit method?
+    else
+      start
+    end
   end
 
-  
+  def play
+  end
 
+  def instruction
+    p "abc"
+  end
+
+  def quit
+  end
 
 end
