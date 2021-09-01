@@ -16,8 +16,19 @@ class Game
     turn_flow
   end
 
-  def generate #come back to this to randomize
-    ['R', 'G', 'Y', 'B']
+  def colors
+    if @difficulty == "Beginner"
+      ['R', 'B', 'G', 'Y']
+    end
+  end
+
+  def generate #come back to this to randomize // would it be better to use a hash here?
+    { #positions are keys, colors are values
+      1 => 'R',
+      2 => 'B',
+      3 => 'G',
+      4 => 'Y'
+    }
   end
 
   def turn_flow #maybe restructure as a loop eventually?
@@ -36,8 +47,10 @@ class Game
     end
   end
 
-  def compare(input)
-    guess = input.chars
+  def compare_elements(input)
+  end
+
+  def compare_positions(inputs)
   end
 
   def quit
