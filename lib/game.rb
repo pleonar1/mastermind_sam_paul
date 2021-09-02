@@ -1,5 +1,5 @@
 require './lib/sequence.rb'
-require './lib/evaluate.rb'
+require './lib/evaluator.rb'
 class Game
 
   attr_reader   :difficulty,
@@ -23,25 +23,32 @@ class Game
     turn_flow
   end
 
-  def turn_flow #maybe restructure as a loop eventually?
-    input = $stdin.gets.chomp
+  def turn_flow
+    correct_positions = 0
 
-    if input.downcase == "q" || input.downcase == "quit"
-      quit
-    elsif input.downcase == "c" || input.downcase == "cheat"
-      puts @code
-    elsif input.length < 4
-      puts "Too short, guess again"
-    elsif input.length > 4
-      puts "Too long, guess again"
-    else
-      evaluator = Evaluator.new(input, @code)
-      correct_colors = evaluator.compare_colors(input)
-      correct_positions = evaluator.compare_positions(input)
+    until correct_positions == 4
 
-      puts "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
+      input = $stdin.gets.chomp
+
+      if input.downcase == "q" || input.downcase == "quit"
+        quit
+      elsif input.downcase == "c" || input.downcase == "cheat"
+        puts @code
+      elsif input.length < 4
+        puts "Too short, guess again"
+      elsif input.length > 4
+        puts "Too long, guess again"
+      else
+        evaluator = Evaluator.new(input, @code)
+        correct_colors = evaluator.compare_colors(input)
+        correct_positions = evaluator.compare_positions(input)
+
+        puts "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
+      end
     end
   end
+
+
   def quit
   end
 end
