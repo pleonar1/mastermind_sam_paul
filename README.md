@@ -15,8 +15,7 @@ Sam and Paul's project
 
 ## DTR
 #### Learning Goals
-- Paul: we should both be on the same page for everything! We should be able to
-  explain each part of the project individually
+- Paul: we should both be on the same page for everything! We should be able to explain each part of the project individually
 - Sam: Understand Git for Pairs
 
 #### Strengths & Areas of Growth

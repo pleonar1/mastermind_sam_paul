@@ -24,10 +24,10 @@ class Game
 
   def generate #come back to this to randomize // would it be better to use a hash here?
     { #positions are keys, colors are values
-      1 => 'R',
-      2 => 'B',
-      3 => 'G',
-      4 => 'Y'
+      0 => 'R',
+      1 => 'B',
+      2 => 'G',
+      3 => 'Y'
     }
   end
 
@@ -50,7 +50,11 @@ class Game
   def compare_elements(input)
   end
 
-  def compare_positions(inputs)
+  def compare_positions(input)
+    guess = input.upcase.chars
+    guess.each do |char|
+      @sequence[char] == guess[char]
+
   end
 
   def quit

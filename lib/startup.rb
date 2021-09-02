@@ -32,5 +32,4 @@ class Startup
   def quit
     p "Goodbye"
   end
-
 end
