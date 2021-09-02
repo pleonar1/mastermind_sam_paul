@@ -1,16 +1,9 @@
 # mastermind_sam_paul
 Sam and Paul's project
 
-## Notes for technical work
-- [sam] I did a little research about OOP and how to decide what classes you need
-- https://blogs.msmvps.com/deborahk/applying-oop-to-simple-games-mastermind/
-  - this blog writes down "nouns" and then uses them to define classes
-    - Game
-    - Board (I think we're playing without one)
-    - Player1/Player2 (we only need one bc the second is the cpu)
-    - Answer Pattern (doesn't need to perform actions - a property of the game)
-    - Guess Pattern (we are relying on user input for guesses so we shouldn't need a separate class here)
-    - Pegs (key to the physical game, but we probably don't need)
+## Questions for check-in
+- How do we test a method that requires user input to run?
+- Should we break up our classes further?
 
 
 ## DTR

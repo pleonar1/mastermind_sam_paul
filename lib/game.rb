@@ -18,15 +18,10 @@ class Game
     puts "#{colors}"
     puts "Use (q)uit at any time to end the game."
     puts "What's your guess?"
-    puts ">"
+    print ">"
 
     turn_flow
   end
-
-  # def generate
-  #   sequence = Sequence.new
-  #   @code = sequence.generate
-  # end
 
   def turn_flow #maybe restructure as a loop eventually?
     input = $stdin.gets.chomp
@@ -43,12 +38,11 @@ class Game
       correct_colors = compare_colors(input) #return the status
       correct_positions = compare_positions(input)
       puts "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
-      require "pry"; binding.pry
     end
   end
 
   def compare_colors(input)
-    guess = input.upcase.chars
+    guess = input.upcase.chars # => ['R', 'G', 'Y', 'R']
     correct_colors = 0
 
     @colors.each do |color|
@@ -58,7 +52,7 @@ class Game
   end
 
   def compare_positions(input)
-    guess = input.upcase.chars
+    guess = input.upcase.chars # => ['R', 'G', 'Y', 'R']
     correct_positions = 0
 
     (0..3).each do |index|
