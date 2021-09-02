@@ -1,12 +1,17 @@
 class Game
+
+  attr_reader   :difficulty,
+                :code,
+                :colors
+
   def initialize(difficulty = "Beginner")
     @difficulty = difficulty
-    @sequence = ''
+    @sequence    = Sequence.new(@difficulty)
+    @code       = sequence.generate
+    @colors     = sequence.colors
   end
 
   def start
-    @sequence = generate
-
     puts "I have generated a #{difficulty} sequence with four elements made up of:"
     puts "#{colors}"
     puts "Use (q)uit at any time to end the game."
@@ -16,52 +21,51 @@ class Game
     turn_flow
   end
 
-  def colors
-    if @difficulty == "Beginner"
-      ['R', 'B', 'G', 'Y']
-    end
-  end
-
-  def generate #come back to this to randomize // would it be better to use a hash here?
-    { #positions are keys, colors are values
-      0 => 'R',
-      1 => 'B',
-      2 => 'G',
-      3 => 'Y'
-    }
-  end
+  # def generate
+  #   sequence = Sequence.new
+  #   @code = sequence.generate
+  # end
 
   def turn_flow #maybe restructure as a loop eventually?
     input = $stdin.gets.chomp
 
-    if input == "q" || input == "quit"
+    if input.downcase == "q" || input.downcase == "quit"
       quit
-    elsif input == "c" || input == "cheat"
-      puts @sequence
+    elsif input.downcase == "c" || input.downcase == "cheat"
+      puts @code
     elsif input.length < 4
       puts "Too short, guess again"
     elsif input.length > 4
       puts "Too long, guess again"
     else
-      compare(input) #return the status
+      correct_colors = compare_colors(input) #return the status
+      correct_positions = compare_positions(input)
+      puts "You have #{correct_colors} and #{correct_positions} are in the correct position"
     end
   end
 
-  def compare_elements(input)
+  def compare_colors(input)
     guess = input.upcase.chars
-    correct_elements = 0
-    
+    correct_colors = 0
 
+    @colors.each do |color|
+      if guess.include? color
+        correct_colors += @code.count(color)
+      end
+    end
+    correct_colors
   end
 
   def compare_positions(input)
     guess = input.upcase.chars
     correct_positions = 0
-    guess.each do |index|
-      if @sequence[index] == guess[index]
+
+    (0..3).each do |index|
+      if @code[index] == guess[index]
         correct_positions += 1
       end
     end
+    correct_positions
   end
 
   def quit
