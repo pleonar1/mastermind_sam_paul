@@ -5,7 +5,6 @@ require './lib/sequence.rb'
 RSpec.describe do
   before :each do
     @game = Game.new
-    @code = @game.generate
   end
 
   it 'exists' do

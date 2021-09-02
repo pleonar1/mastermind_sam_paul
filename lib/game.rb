@@ -1,3 +1,5 @@
+require './lib/sequence.rb'
+
 class Game
 
   attr_reader   :difficulty,
@@ -6,9 +8,9 @@ class Game
 
   def initialize(difficulty = "Beginner")
     @difficulty = difficulty
-    @sequence    = Sequence.new(@difficulty)
-    @code       = sequence.generate
-    @colors     = sequence.colors
+    @sequence   = Sequence.new(@difficulty)
+    @code       = @sequence.generate
+    @colors     = @sequence.colors
   end
 
   def start
@@ -40,7 +42,8 @@ class Game
     else
       correct_colors = compare_colors(input) #return the status
       correct_positions = compare_positions(input)
-      puts "You have #{correct_colors} and #{correct_positions} are in the correct position"
+      puts "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
+      require "pry"; binding.pry
     end
   end
 
@@ -49,9 +52,7 @@ class Game
     correct_colors = 0
 
     @colors.each do |color|
-      if guess.include? color
-        correct_colors += @code.count(color)
-      end
+      correct_colors += [guess.count(color), @code.count(color)].min
     end
     correct_colors
   end
