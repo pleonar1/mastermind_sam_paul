@@ -48,13 +48,20 @@ class Game
   end
 
   def compare_elements(input)
+    guess = input.upcase.chars
+    correct_elements = 0
+    
+
   end
 
   def compare_positions(input)
     guess = input.upcase.chars
-    guess.each do |char|
-      @sequence[char] == guess[char]
-
+    correct_positions = 0
+    guess.each do |index|
+      if @sequence[index] == guess[index]
+        correct_positions += 1
+      end
+    end
   end
 
   def quit
