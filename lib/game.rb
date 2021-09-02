@@ -1,5 +1,5 @@
 require './lib/sequence.rb'
-
+require './lib/evaluate.rb'
 class Game
 
   attr_reader   :difficulty,
@@ -35,36 +35,13 @@ class Game
     elsif input.length > 4
       puts "Too long, guess again"
     else
-      correct_colors = compare_colors(input) #return the status
-      correct_positions = compare_positions(input)
+      evaluator = Evaluator.new(input, @code)
+      correct_colors = evaluator.compare_colors(input)
+      correct_positions = evaluator.compare_positions(input)
+
       puts "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
     end
   end
-
-  def compare_colors(input)
-    guess = input.upcase.chars # => ['R', 'G', 'Y', 'R']
-    correct_colors = 0
-
-    @colors.each do |color|
-      correct_colors += [guess.count(color), @code.count(color)].min
-    end
-    correct_colors
-  end
-
-  def compare_positions(input)
-    guess = input.upcase.chars # => ['R', 'G', 'Y', 'R']
-    correct_positions = 0
-
-    (0..3).each do |index|
-      if @code[index] == guess[index]
-        correct_positions += 1
-      end
-    end
-    correct_positions
-  end
-
   def quit
   end
-
-
 end
