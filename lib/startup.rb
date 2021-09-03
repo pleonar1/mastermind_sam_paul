@@ -32,6 +32,6 @@ class Startup
   end
 
   def quit
-    p "Goodbye"
+    p "Have a nice day!"
   end
 end
