@@ -1,5 +1,7 @@
 require './lib/sequence.rb'
 require './lib/evaluator.rb'
+require './lib/startup.rb'
+
 class Game
 
   attr_reader   :difficulty,
@@ -36,6 +38,7 @@ class Game
 
       if input.downcase == "q" || input.downcase == "quit"
         quit
+        break
       elsif input.downcase == "c" || input.downcase == "cheat"
         puts @code
       elsif input.length < 4
@@ -61,6 +64,16 @@ class Game
   end
 
   def quit
+    puts "Quit the game? Press (q) again to exit to the main menu, or any other key to return to the game."
+    print ">"
+    input = gets.chomp.downcase
+
+    if input == 'q'
+      puts "Game abandoned."
+      puts "-" * 70
+      startup = Startup.new
+      startup.intro
+    end
   end
 
   def winner?(correct_positions)
