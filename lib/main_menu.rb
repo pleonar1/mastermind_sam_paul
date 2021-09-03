@@ -1,11 +1,11 @@
 require './lib/game.rb'
 
-class Startup
+class MainMenu
 
   def initialize
   end
 
-  def intro
+  def menu
     puts "Welcome to MASTERMIND\n"
     puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
     print ">"
@@ -18,7 +18,7 @@ class Startup
       quit
     else
       puts "Input not understood."
-      intro # is this bad?
+      menu
     end
   end
 
@@ -40,7 +40,7 @@ class Startup
     puts "6) The player will be told after each guess how many colors they guessed"
     puts "correctly and how many colors they guessed in the correct position"
     puts "7) The game ends when the player correctly guesses the secret code"
-    intro
+    menu
   end
 
   def quit

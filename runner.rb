@@ -1,5 +1,5 @@
-require './lib/startup.rb'
+require './lib/main_menu.rb'
 # require './lib/game.rb'
 
-startup = Startup.new
-startup.intro
+menu = MainMenu.new
+menu.menu

@@ -1,6 +1,6 @@
 require './lib/sequence.rb'
 require './lib/evaluator.rb'
-require './lib/startup.rb'
+require './lib/main_menu.rb'
 
 class Game
 
@@ -71,8 +71,8 @@ class Game
     if input == 'q'
       puts "Game abandoned."
       puts "-" * 70
-      startup = Startup.new
-      startup.intro
+      menu = MainMenu.new
+      menu.menu
     end
   end
 
