@@ -56,14 +56,14 @@ class Printer
 
   def turn_counter(turn_counter)
     if turn_counter != 1
-      p "You've taken #{turn_counter} guesses.\n\n"
+      puts "You've taken #{turn_counter} guesses.\n\n"
     else
-      p "You've taken 1 guess.\n\n"
+      puts "You've taken 1 guess.\n\n"
     end
   end
 
   def end_game(code, turn_counter, final_time)
-    p "Congratulations! You guessed the sequence #{code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds."
+    puts "Congratulations! You guessed the sequence #{code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds."
   end
 
   def quit

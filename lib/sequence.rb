@@ -3,7 +3,7 @@ class Sequence
   attr_reader :colors
 
   def initialize(difficulty = "Beginner")
-    @colors = ['R', 'B', 'G', 'Y']
+    @colors = ['R','B','G','Y']
   end
 
   def generate

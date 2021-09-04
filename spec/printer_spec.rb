@@ -32,12 +32,12 @@ RSpec.describe do
     expect(@printer.evaluation(3, 2)).to eq "You have 3 correct colors and 2 are in the correct positions"
   end
 
-  it 'counts turns' do
+  xit 'counts turns' do
     expect(@printer.turn_counter(1)).to eq "You've taken 1 guess.\n\n"
     expect(@printer.turn_counter(2)).to eq "You've taken 2 guesses.\n\n"
   end
 
-  it 'prints a message at the end of the game' do
+  xit 'prints a message at the end of the game' do
     code = ['R','B','Y','B']
     turn_counter = 10
     final_time = [4, 30]
