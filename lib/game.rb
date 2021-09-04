@@ -1,6 +1,7 @@
 require './lib/sequence.rb'
 require './lib/evaluator.rb'
 require './lib/main_menu.rb'
+require './lib/printer.rb'
 
 class Game
 
@@ -13,36 +14,49 @@ class Game
     @sequence   = Sequence.new(@difficulty)
     @code       = @sequence.generate
     @colors     = @sequence.colors
+    @printer    = Printer.new
   end
 
   def start
-    puts "I have generated a #{difficulty} sequence with four elements made up of:"
-    puts "#{colors}"
-    puts "Use (q)uit at any time to end the game."
-    puts "What's your guess?"
-    print ">"
-
+    @printer.start_game(@difficulty)
     turn_flow
-
   end
 
   def valid_input?(input)
-    if input.length < 4
-      puts "Too short, guess again"
-      false
-    elsif input.length > 4
-      puts "Too long, guess again"
-      false
+    if @difficulty == "Beginner"
+      if input.length < 4
+        puts "Too short, guess again"
+        false
+      elsif input.length > 4
+        puts "Too long, guess again"
+        false
+      end
+    elsif @difficulty == "Intermediate"
+      if input.length < 6
+        puts "Too short, guess again"
+        false
+      elsif input.length > 6
+        puts "Too long, guess again"
+        false
+      end
+    elsif @difficulty == "Advanced"
+      if input.length < 8
+        puts "Too short, guess again"
+        false
+      elsif input.length > 8
+        puts "Too long, guess again"
+        false
+      end
     end
   end
 
   def turn_flow
-    time = start_time
+    time = Time.now
     correct_positions = 0
     turn_counter = 0
 
     until correct_positions == 4
-
+      @printer.input
       input = $stdin.gets.chomp
 
       if input.downcase == "q" || input.downcase == "quit"
@@ -53,36 +67,29 @@ class Game
       elsif valid_input?(input) == false
       else
         evaluator = Evaluator.new(input, @code)
+        correct_colors = evaluator.compare_colors(input)
+        correct_positions = evaluator.compare_positions(input)
         turn_counter += 1
 
         if winner?(evaluator.compare_positions(input))
           game_end(time, turn_counter)
           break
         else
-          puts "You have #{evaluator.compare_colors(input)} correct colors and #{evaluator.compare_positions(input)} are in the correct positions"
-          if turn_counter != 1
-            puts "You've taken #{turn_counter} guesses."
-          else
-            puts "You've taken 1 guess."
-          end
+          @printer.evaluation(correct_colors, correct_positions)
+          @printer.turn_counter(turn_counter)
         end
       end
     end
   end
 
   def quit
-    puts "Game abandoned."
-    puts "-" * 70
+    @printer.quit
     menu = MainMenu.new
     menu.menu
   end
 
   def winner?(correct_positions)
     correct_positions == 4
-  end
-
-  def start_time
-    Time.now
   end
 
   def elapsed_time(time)
@@ -97,7 +104,6 @@ class Game
 
   def game_end(time, turn_counter)
     final_time = elapsed_time(time)
-
-    puts "Congratulations! You guessed the sequence #{@code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds"
+    @printer.end_game(@code, turn_counter, final_time)
   end
 end
