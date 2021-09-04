@@ -72,16 +72,10 @@ class Game
   end
 
   def quit
-    puts "Quit the game? Press (q) again to exit to the main menu, or any other key to return to the game."
-    print ">"
-    input = gets.chomp.downcase
-
-    if input == 'q'
-      puts "Game abandoned."
-      puts "-" * 70
-      menu = MainMenu.new
-      menu.menu
-    end
+    puts "Game abandoned."
+    puts "-" * 70
+    menu = MainMenu.new
+    menu.menu
   end
 
   def winner?(correct_positions)
