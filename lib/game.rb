@@ -53,14 +53,13 @@ class Game
       elsif valid_input?(input) == false
       else
         evaluator = Evaluator.new(input, @code)
-        correct_colors = evaluator.compare_colors(input)
-        correct_positions = evaluator.compare_positions(input)
         turn_counter += 1
-        if winner?(correct_positions)
+
+        if winner?(evaluator.compare_positions(input))
           game_end(time, turn_counter)
           break
         else
-          puts "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
+          puts "You have #{evaluator.compare_colors(input)} correct colors and #{evaluator.compare_positions(input)} are in the correct positions"
           if turn_counter != 1
             puts "You've taken #{turn_counter} guesses."
           else
@@ -88,7 +87,6 @@ class Game
 
   def elapsed_time(time)
     mins_secs = []
-
     elapsed_time = Time.now - time
 
     mins_secs << (elapsed_time).to_i / 60 # minutes (index 0)
@@ -98,7 +96,6 @@ class Game
   end
 
   def game_end(time, turn_counter)
-    turn_counter = turn_counter
     final_time = elapsed_time(time)
 
     puts "Congratulations! You guessed the sequence #{@code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds"
