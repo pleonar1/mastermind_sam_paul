@@ -105,5 +105,11 @@ class Game
   def game_end(time, turn_counter)
     final_time = elapsed_time(time)
     @printer.end_game(@code, turn_counter, final_time)
+    
+    input = $stdin.gets.chomp
+    if input.downcase == "p" || input.downcase == "play"
+      @code = @sequence.generate
+      start
+    end
   end
 end

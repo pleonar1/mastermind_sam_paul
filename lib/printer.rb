@@ -64,6 +64,8 @@ class Printer
 
   def end_game(code, turn_counter, final_time)
     puts "Congratulations! You guessed the sequence #{code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds."
+    puts "Do you want to (p)lay again or (q)uit?"
+    print "> "
   end
 
   def quit
