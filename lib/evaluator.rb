@@ -1,5 +1,6 @@
 require './lib/game.rb'
 require './lib/sequence.rb'
+
 class Evaluator
   def initialize(input, code)
     @input = input

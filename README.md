@@ -3,7 +3,13 @@ Sam and Paul's project
 
 ## Questions for check-in
 - How do we test a method that requires user input to run?
+  - try to write code such that methods take arguments and return something because they are easier to test
+  - the alternative is using instance variables, but if the instance variable isn't what you expect it to be, it's harder to isolate
 - Should we break up our classes further?
+  - list out classes on a piece of paper
+    - write names of methods under classes
+  - ask: does this really belong together? (the line is fuzzy but this helps)
+  - general guidelines: 100 lines of code per class is probably too many, but not necessarily
 
 
 ## DTR
