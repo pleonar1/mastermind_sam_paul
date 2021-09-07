@@ -66,7 +66,7 @@ class Game
         puts @code
       elsif valid_input?(input) == false
       else
-        evaluator = Evaluator.new(input, @code)
+        evaluator = Evaluator.new(@code)
         correct_colors = evaluator.compare_colors(input)
         correct_positions = evaluator.compare_positions(input)
         turn_counter += 1
