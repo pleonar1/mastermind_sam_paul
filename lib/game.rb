@@ -95,5 +95,6 @@ class Game
       @code = @sequence.generate
       start
     end
+    turn_counter
   end
 end
