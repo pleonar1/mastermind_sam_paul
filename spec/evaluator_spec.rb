@@ -2,25 +2,33 @@ require './lib/evaluator.rb'
 
 RSpec.describe do
   it 'exists' do
-    evaluator = Evaluator.new
+    guess = ['R', 'R', 'B', 'B']
+    code = ['R', 'R', 'R', 'R']
+    evaluator = Evaluator.new(guess, code)
+
 
     expect(evaluator).to be_a Evaluator
   end
 
   it "can compare positons" do### might need input here
-    evaluator = Evaluator.new
     guess = ['R', 'R', 'B', 'B']
-    @code = ['R', 'R', 'R', 'R']
-    evaluator.compare_positions
+    code = ['R', 'R', 'R', 'R']
+    input = 'RRBB'
+    evaluator = Evaluator.new(guess, code)
+    evaluation = evaluator.compare_positions(input)
 
-    expect(correct_positions).to eq(2)
+    expect(evaluation).to eq(2)
   end
 
   it "can compare colors" do
-    evaluator = Evaluator.new
     guess = ['R', 'R', 'B', 'B']
     sequence = ['R', 'R', 'R', 'R']
-    evaluator.compare_colors
+    input = 'RRBB'
+    evaluator = Evaluator.new(guess, sequence)
+    evaluation = evaluator.compare_colors(input)
 
-    expect(correct_colors).to eq(2)
+
+
+    expect(evaluation).to eq(2)
   end
+end
