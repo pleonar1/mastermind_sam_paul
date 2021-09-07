@@ -1,4 +1,3 @@
-require 'rspec'
 require './lib/sequence.rb'
 
 RSpec.describe do
@@ -14,5 +13,14 @@ RSpec.describe do
 
     expect(code.length).to eq 4
     p code
+  end
+
+  it "generates random sequences" do
+    sequence_1 = Sequence.new
+    sequence_2 = Sequence.new
+    code_1 = sequence_1.generate
+    code_2 = sequence_2.generate
+
+    expect(code_1 == code_2).to eq(false)
   end
 end
