@@ -22,32 +22,17 @@ class Game
     turn_flow
   end
 
-  def valid_input?(input)
-    if @difficulty == "Beginner"
-      if input.length < 4
-        puts "Too short, guess again"
-        false
-      elsif input.length > 4
-        puts "Too long, guess again"
-        false
-      end
-    elsif @difficulty == "Intermediate"
-      if input.length < 6
-        puts "Too short, guess again"
-        false
-      elsif input.length > 6
-        puts "Too long, guess again"
-        false
-      end
-    elsif @difficulty == "Advanced"
-      if input.length < 8
-        puts "Too short, guess again"
-        false
-      elsif input.length > 8
-        puts "Too long, guess again"
-        false
-      end
-    end
+  def evaluate
+    evaluator ||= Evaluator.new(@code)  # memoization: var either already holds a value and you don't need to instantiate, OR it's nil, and we will set it to this object.
+                                        # forces us to only instantiate it once
+  end
+
+  def correct_colors(input)
+    evaluate.compare_colors(input)
+  end
+
+  def correct_positions(input)
+    evaluate.compare_positions(input)
   end
 
   def turn_flow
@@ -64,14 +49,13 @@ class Game
         break
       elsif input.downcase == "c" || input.downcase == "cheat"
         puts @code
-      elsif valid_input?(input) == false
+      elsif evaluate.valid_input?(input, @difficulty) == false
       else
-        evaluator = Evaluator.new(input, @code)
-        correct_colors = evaluator.compare_colors(input)
-        correct_positions = evaluator.compare_positions(input)
+        correct_colors = correct_colors(input)
+        correct_positions = correct_positions(input)
         turn_counter += 1
 
-        if winner?(evaluator.compare_positions(input))
+        if winner?(correct_positions)
           game_end(time, turn_counter)
           break
         else
@@ -105,7 +89,7 @@ class Game
   def game_end(time, turn_counter)
     final_time = elapsed_time(time)
     @printer.end_game(@code, turn_counter, final_time)
-    
+
     input = $stdin.gets.chomp
     if input.downcase == "p" || input.downcase == "play"
       @code = @sequence.generate
