@@ -17,5 +17,14 @@ RSpec.describe do
     it "can quit" do
       expect(@menu.quit).to eq('Have a nice day!')
     end
+
+    it "can play" do
+      expect(@menu.play).to eq(game.start)
+    end
+
+    xit "can print instructions" do
+      #unsure what to put here
+    end
   end
+
 end
