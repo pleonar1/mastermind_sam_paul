@@ -5,7 +5,7 @@ _Mastermind_
 
 Run `ruby mastermind.rb` from the command line to play!
 
-Questions, comments, feedback? Message `@Paul Leonard` and `@Sam D. (he/him)` on the Turing Slack or find us here on GitHub `pleonar1` and `samueldevine`. Thanks!
+Questions, comments, feedback? Message `@Paul Leonard` and `@Sam D. (he/him)` on the Turing Slack or find us here on GitHub: `pleonar1` and `samueldevine`. Thanks!
 
 
 
