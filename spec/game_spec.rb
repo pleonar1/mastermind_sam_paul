@@ -22,16 +22,6 @@ RSpec.describe do
     expect(@game_2.difficulty).to eq('Intermediate')
   end
 
-  it "can determine if an input is invalid" do
-    input_1 = @game.valid_input?("rrr")
-    input_2 = @game.valid_input?("rrrrr")
-    input_3 = @game.valid_input?('rrrr')
-
-    expect(input_1).to eq(false)
-    expect(input_2).to eq(false)
-    expect(input_3).to eq(nil)
-  end
-
   xit "can complete multiple turns?" do
     @code = ["R", "B", "G", "Y"]
     evaluator = Evaluator.new(@code)

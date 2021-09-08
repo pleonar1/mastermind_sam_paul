@@ -32,4 +32,20 @@ RSpec.describe do
     expect(evaluation_1).to eq(2)
     expect(evaluation_2).to eq(3)
   end
+
+  it "can determine if an input is invalid" do
+    sequence = ['R', 'R', 'R', 'R']
+    evaluator = Evaluator.new(sequence)
+    input_1 = evaluator.valid_input?("rrr")
+    input_2 = evaluator.valid_input?("rrrrr")
+    input_3 = evaluator.valid_input?('rrrr')
+    input_4 = evaluator.valid_input?('1234')
+
+    expect(input_1).to eq(false)
+    expect(input_2).to eq(false)
+    expect(input_3).to eq(nil)
+    expect(input_4).to eq(false)
+  end
+
+  
 end

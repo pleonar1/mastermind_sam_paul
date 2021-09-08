@@ -29,7 +29,7 @@ class Evaluator
     correct_colors
   end
 
-  def valid_input?(input, difficulty)
+  def valid_input?(input, difficulty = "Beginner")
     if input.count("^RrBbYyGg") != 0 # the caret (^) tells us to look for any character EXCEPT the ones we've named
       puts "You many only guess a combination of 'R', 'B', 'G', or 'Y'"
       false
