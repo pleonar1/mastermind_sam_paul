@@ -68,8 +68,12 @@ class Printer
     print "> "
   end
 
-  def quit
+  def quit_game
     puts "Game abandoned."
     p "-" * 70
+  end
+
+  def quit_menu
+    p 'Have a nice day!'
   end
 end
