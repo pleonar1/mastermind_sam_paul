@@ -45,7 +45,11 @@ RSpec.describe do
     expect(@printer.end_game(code, turn_counter, final_time)).to eq "Congratulations! You guessed the sequence #{code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds."
   end
 
-  it 'prints a quit message' do
-    expect(@printer.quit).to eq "-" * 70
+  it 'prints a quit game message' do
+    expect(@printer.quit_game).to eq "-" * 70
+  end
+
+  it 'prints a quit menu message' do
+    expect(@printer.quit_menu).to eq 'Have a nice day!'
   end
 end
