@@ -13,18 +13,17 @@ RSpec.describe do
     end
   end
 
-  context "functionality" do
-    it "can quit" do
-      expect(@menu.quit).to eq('Have a nice day!')
+  context "Game creation" do
+    it "can create a game" do
+      expect(@menu.create_game).to be_a(Game)
     end
 
-    it "can play" do
-      expect(@menu.play).to eq(game.start)
-    end
-
-    xit "can print instructions" do
-      #unsure what to put here
+    it "can start the game" do
+      game = @menu.create_game
+      allow(game).to receive(:start).and_return('Game Started!')
+      # using a stub here to avoid actually starting a game
+      
+      expect(@menu.start_game(game)).to eq('Game Started!')
     end
   end
-
 end
