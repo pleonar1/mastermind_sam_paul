@@ -22,17 +22,17 @@ class Game
     turn_flow
   end
 
-  def evaluate
-    evaluator ||= Evaluator.new(@code)  # memoization: var either already holds a value and you don't need to instantiate, OR it's nil, and we will set it to this object.
+  def evaluate(code)
+    evaluator ||= Evaluator.new(code)  # memoization: var either already holds a value and you don't need to instantiate, OR it's nil, and we will set it to this object.
                                         # forces us to only instantiate it once
   end
 
-  def correct_colors(input)
-    evaluate.compare_colors(input)
+  def correct_colors(input, code)
+    evaluate(code).compare_colors(input)
   end
 
-  def correct_positions(input)
-    evaluate.compare_positions(input)
+  def correct_positions(input, code)
+    evaluate(code).compare_positions(input)
   end
 
   def turn_flow
@@ -49,10 +49,10 @@ class Game
         break
       elsif input.downcase == "c" || input.downcase == "cheat"
         puts @code
-      elsif evaluate.valid_input?(input, @difficulty) == false
+      elsif evaluate(@code).valid_input?(input, @difficulty) == false
       else
-        correct_colors = correct_colors(input)
-        correct_positions = correct_positions(input)
+        correct_colors = correct_colors(input, @code)
+        correct_positions = correct_positions(input, @code)
         turn_counter += 1
 
         if winner?(correct_positions)
