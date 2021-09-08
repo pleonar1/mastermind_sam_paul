@@ -1,15 +1,13 @@
 # mastermind_sam_paul
-Sam and Paul's project
+Sam and Paul's Paired Project // Turing Mod 1 Week 2-3
 
-## Questions for check-in
-- How do we test a method that requires user input to run?
-  - try to write code such that methods take arguments and return something because they are easier to test
-  - the alternative is using instance variables, but if the instance variable isn't what you expect it to be, it's harder to isolate
-- Should we break up our classes further?
-  - list out classes on a piece of paper
-    - write names of methods under classes
-  - ask: does this really belong together? (the line is fuzzy but this helps)
-  - general guidelines: 100 lines of code per class is probably too many, but not necessarily
+_Mastermind_
+
+Run `ruby mastermind.rb` from the command line to play!
+
+Questions, comments, feedback? Message `@Paul Leonard` and `@Sam D. (he/him)` on the Turing Slack or find us here on GitHub `pleonar1` and `samueldevine`. Thanks!
+
+
 
 
 ## DTR
@@ -26,8 +24,8 @@ Sam and Paul's project
 - Sam: Learn best solo to solidify understanding, then coming together later
 
 #### How do you communicate best?
-- Paul: DTR should really help!
-- Sam: Prefer written, but fine with either!
+- Paul: DTR should really help
+- Sam: Prefer written, but fine with either
 
 #### Scheduling restraints?
 - Paul: not really!
