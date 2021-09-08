@@ -6,12 +6,16 @@ RSpec.describe do
     @printer = Printer.new
   end
 
+  it 'exists' do
+    expect(@printer).to be_a Printer
+  end
+
   it 'prints a welcome message' do
-    expect(@printer.welcome).to eq nil
+    expect(@printer.welcome).to be_nil
   end
 
   it 'prints instructions' do
-    expect(@printer.instructions).to eq nil
+    expect(@printer.instructions).to be_nil
   end
 
   it 'prints a start message' do
@@ -25,24 +29,27 @@ RSpec.describe do
   end
 
   it 'prompts inputs' do
-    expect(@printer.input).to eq nil
+    expect(@printer.input).to be_nil
   end
 
-  it 'evaluates' do
-    expect(@printer.evaluation(3, 2)).to eq "You have 3 correct colors and 2 are in the correct positions"
+  it 'prints evaluations' do
+    colors = 3
+    positions = 2
+
+    expect(@printer.evaluation(colors, positions)).to eq "You have 3 correct colors and 2 are in the correct positions."
   end
 
-  xit 'counts turns' do
-    expect(@printer.turn_counter(1)).to eq "You've taken 1 guess.\n\n"
-    expect(@printer.turn_counter(2)).to eq "You've taken 2 guesses.\n\n"
+  it 'counts turns' do
+    turn_count = 1
+    expect(@printer.turn_counter(turn_count)).to eq "You've taken 1 guess."
+    turn_count += 1
+    expect(@printer.turn_counter(turn_count)).to eq "You've taken 2 guesses."
   end
 
-  xit 'prints a message at the end of the game' do
+  it 'prints a message at the end of the game' do
     code = ['R','B','Y','B']
-    turn_counter = 10
-    final_time = [4, 30]
 
-    expect(@printer.end_game(code, turn_counter, final_time)).to eq "Congratulations! You guessed the sequence #{code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds."
+    expect(@printer.end_game(code, 10, [4, 30])).to eq "Do you want to (p)lay again or (q)uit?"
   end
 
   it 'prints a quit game message' do

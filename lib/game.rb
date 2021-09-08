@@ -67,7 +67,7 @@ class Game
   end
 
   def quit
-    @printer.quit
+    @printer.quit_game
     menu = MainMenu.new
     menu.menu
   end
@@ -89,6 +89,7 @@ class Game
   def game_end(time, turn_counter)
     final_time = elapsed_time(time)
     @printer.end_game(@code, turn_counter, final_time)
+    @printer.input
 
     input = $stdin.gets.chomp
     if input.downcase == "p" || input.downcase == "play"

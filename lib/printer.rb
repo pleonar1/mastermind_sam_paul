@@ -29,48 +29,53 @@ class Printer
   def start_game(difficulty)
     if difficulty == "Beginner"
       puts "\n"
+      puts "- " * 35
       puts "I have generated a #{difficulty} sequence with four elements made up of:"
       p "(R)ed, (B)lue, (G)reen, and (Y)ellow."
     elsif difficulty == "Intermediate"
       puts "\n"
+      puts "- " * 35
       puts "I have generated a #{difficulty} sequence with six elements made up of:"
       p "(R)ed, (B)lue, (G)reen, (Y)ellow, and (P)urple."
     elsif difficulty == "Advanced"
       puts "\n"
+      puts "- " * 35
       puts "I have generated a #{difficulty} sequence with eight elements made up of:"
       p "(R)ed, (B)lue, (G)reen, (Y)ellow, (P)urple, and (O)range."
     end
     puts "\n"
-    puts "Use (q)uit at any time to end the game.\n\n"
-    puts "- - - - -"
+    puts "Use (q)uit at any time to end the game."
+    puts "- " * 35 + "\n\n"
     p "What's your guess?"
   end
 
   def input
+    puts "\n"
     print "> "
   end
 
   def evaluation(correct_colors, correct_positions)
-    p "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions"
+    puts ""
+    p "You have #{correct_colors} correct colors and #{correct_positions} are in the correct positions."
   end
 
   def turn_counter(turn_counter)
     if turn_counter != 1
-      puts "You've taken #{turn_counter} guesses.\n\n"
+      p "You've taken #{turn_counter} guesses."
     else
-      puts "You've taken 1 guess.\n\n"
+      p "You've taken 1 guess."
     end
   end
 
   def end_game(code, turn_counter, final_time)
+    puts ""
     puts "Congratulations! You guessed the sequence #{code} in #{turn_counter} guesses over #{final_time[0]} minutes and #{final_time[1]} seconds."
-    puts "Do you want to (p)lay again or (q)uit?"
-    print "> "
+    p "Do you want to (p)lay again or (q)uit?"
   end
 
   def quit_game
     puts "Game abandoned."
-    p "-" * 70
+    p '-' * 70
   end
 
   def quit_menu
